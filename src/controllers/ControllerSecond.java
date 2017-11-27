@@ -1,10 +1,9 @@
 package controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.Change;
 import sample.Main;
 
@@ -21,26 +20,43 @@ public class ControllerSecond implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        change = Main.getChange();          //как мне не нравится такая реализация...
+        change.setSecondController(this);
         btn.setOnAction(e -> {
             if (surnameField.getText().isEmpty())
                 showMessageWarning("Не заполнена фамилия");
             else if (nameField.getText().isEmpty())
                 showMessageWarning("Не заполнено имя");
             else {
-                change = Main.getChange();
-
-                try {
-                    change.toFirst();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                changeForm();
             }
         });
+
     }
 
     private void showMessageWarning(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.APPLY);
         alert.setHeaderText(null);
-        alert.show();
+        alert.showAndWait();
+
     }
+
+    private void showMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.YES, ButtonType.CANCEL);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        if (alert.getResult() == (ButtonType.YES)){
+            partnameField.requestFocus();
+        } else if (alert.getResult().equals(ButtonType.CANCEL))
+            System.out.println("NO");
+    }
+
+    private void changeForm() {
+        try {
+            change.toFirst();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
 }

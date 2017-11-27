@@ -2,6 +2,8 @@ package sample;
 
 import controllers.ControllerFirst;
 import controllers.ControllerSecond;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,14 +20,6 @@ public class Change {
 
     public Change(Stage stage) throws IOException {
         this.stage = stage;
-
-    }
-    public Change(ControllerFirst controllerFirst){
-        firstController = controllerFirst;
-    }
-
-    public Change(ControllerSecond secondController) {
-        this.secondController = secondController;
     }
 
     private Parent getFirstParent() throws IOException {
@@ -48,5 +42,11 @@ public class Change {
         stage.setScene(new Scene(parent, 400, 300));
     }
 
+    public void setFirstController(ControllerFirst firstController) {
+        this.firstController = firstController;
+    }
 
+    public void setSecondController(ControllerSecond secondController) {
+        this.secondController = secondController;
+    }
 }
