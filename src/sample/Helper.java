@@ -26,13 +26,24 @@ public class Helper {
         controller2.setControllerHelper(this);
 
         toFirstScene();
+        window.show();
     }
 
 
 
     public void toFirstScene() {
         window.setScene(scene1);
-        window.show();
+    }
+    public void toSecondScene() {
+        window.setScene(scene2);
+    }
 
+    public void transferPerson1to2(){
+        controller2.setPerson(controller1.getPerson());
+        toSecondScene();
+    }
+    public void transferPerson2to1(){
+        controller1.setPerson(controller2.getPerson());
+        toFirstScene();
     }
 }

@@ -19,17 +19,17 @@ public class ControllerSecond implements Initializable, Controllers {
     public TextField partnameField;
     public Button btn;
     private static Change change;
+    private Helper helper;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        change = Main.getChange();          //как мне не нравится такая реализация...
-//        change.setSecondController(this);
         btn.setOnAction(e -> {
             if (surnameField.getText().isEmpty())
                 showMessageWarning("Не заполнена фамилия");
             else if (nameField.getText().isEmpty())
                 showMessageWarning("Не заполнено имя");
-            else {
+            else if (partnameField.getText().isEmpty()){
+                showMessage();
                 changeForm();
             }
         });
@@ -43,36 +43,43 @@ public class ControllerSecond implements Initializable, Controllers {
 
     }
 
-    private void showMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.YES, ButtonType.CANCEL);
+    private void showMessage() {
+        Alert alert = new Alert(Alert.AlertType.WARNING,
+                "Не заполнено отчество. Вы хотите его заполнить?",
+                ButtonType.YES, ButtonType.CANCEL);
         alert.setHeaderText(null);
         alert.showAndWait();
+
         if (alert.getResult() == (ButtonType.YES)){
             partnameField.requestFocus();
         } else if (alert.getResult().equals(ButtonType.CANCEL))
-            System.out.println("NO");
+            //System.out.println("NO");
+            changeForm();
     }
 
     private void changeForm() {
-        try {
-            change.toFirst();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+        //helper.toFirstScene();
+        helper.transferPerson2to1();
     }
 
     @Override
     public Person getPerson() {
-        return null;
+        Person person = new Person();
+        person.setSurname(surnameField.getText().isEmpty() ? null : surnameField.getText());
+        person.setName(nameField.getText().isEmpty() ? null : nameField.getText());
+        person.setPatronymic(partnameField.getText().isEmpty() ? null : partnameField.getText());
+        return person;
     }
 
     @Override
     public void setPerson(Person person) {
-
+        surnameField.setText(person.getSurname());
+        nameField.setText(person.getName());
+        partnameField.setText(person.getPatronymic());
     }
 
     @Override
     public void setControllerHelper(Helper helper) {
-
+        this.helper = helper;
     }
 }
