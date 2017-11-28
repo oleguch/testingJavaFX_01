@@ -19,9 +19,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Stage stage = primaryStage;
         stage.setTitle("Hello World");
-        change = new Change(stage);
-        change.toFirst();
-        stage.show();
+        //change = new Change(stage);
+        //change.toFirst();
+        Helper helper = new Helper(primaryStage);
+        //stage.show();
 
     }
 

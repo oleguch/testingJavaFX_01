@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import sample.Change;
+import sample.Helper;
 import sample.Main;
+import sample.Person;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerFirst implements Initializable {
+public class ControllerFirst implements Initializable, Controllers {
     @FXML
     private Button btn;
     @FXML
@@ -24,8 +26,8 @@ public class ControllerFirst implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        change = Main.getChange();          //очень не нравится такая реализация
-        change.setFirstController(this);
+//        change = Main.getChange();          //очень не нравится такая реализация
+//        change.setFirstController(this);
         btn.setOnAction(event -> {
             if (fioField.getText().isEmpty()) {
                 showMessageWarning("Не заполнено поле ФИО");
@@ -54,5 +56,20 @@ public class ControllerFirst implements Initializable {
 
     public void addAction(EventHandler<ActionEvent> qqw) {
         btn.setOnAction(qqw);
+    }
+
+    @Override
+    public Person getPerson() {
+        return null;
+    }
+
+    @Override
+    public void setPerson(Person person) {
+
+    }
+
+    @Override
+    public void setControllerHelper(Helper helper) {
+
     }
 }

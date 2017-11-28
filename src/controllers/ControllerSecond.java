@@ -5,13 +5,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.Change;
+import sample.Helper;
 import sample.Main;
+import sample.Person;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerSecond implements Initializable{
+public class ControllerSecond implements Initializable, Controllers {
     public TextField surnameField;
     public TextField nameField;
     public TextField partnameField;
@@ -20,8 +22,8 @@ public class ControllerSecond implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        change = Main.getChange();          //как мне не нравится такая реализация...
-        change.setSecondController(this);
+//        change = Main.getChange();          //как мне не нравится такая реализация...
+//        change.setSecondController(this);
         btn.setOnAction(e -> {
             if (surnameField.getText().isEmpty())
                 showMessageWarning("Не заполнена фамилия");
@@ -59,4 +61,18 @@ public class ControllerSecond implements Initializable{
         }
     }
 
+    @Override
+    public Person getPerson() {
+        return null;
+    }
+
+    @Override
+    public void setPerson(Person person) {
+
+    }
+
+    @Override
+    public void setControllerHelper(Helper helper) {
+
+    }
 }
