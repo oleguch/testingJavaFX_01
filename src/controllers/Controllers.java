@@ -1,13 +1,15 @@
 package controllers;
 
-import sample.Helper;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import sample.Person;
 
 public interface Controllers {
-    public Person getPerson();
+    Person getPerson();
 
-    public void setPerson(Person person);
+    void setPerson(Person person);
 
-    public void setControllerHelper(Helper helper);
+    void addAction(EventHandler<ActionEvent> event);
+
 
 }
