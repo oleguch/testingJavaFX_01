@@ -34,7 +34,7 @@ public class ControllerSecond implements Initializable, Controllers {
         Person person = new Person();
         person.setSurname(surnameField.getText().isEmpty() ? null : surnameField.getText());
         person.setName(nameField.getText().isEmpty() ? null : nameField.getText());
-        person.setPatronymic(patronymic.getText().isEmpty() ? null : patronymic.getText());
+        person.setPatronymic(patronymic.getText() == null || patronymic.getText().isEmpty() ? null : patronymic.getText());
         return person;
     }
 
