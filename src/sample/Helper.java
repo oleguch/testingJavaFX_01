@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
@@ -96,6 +97,10 @@ public class Helper {
         Alert alert = new Alert(Alert.AlertType.WARNING,
                 "Не заполнено отчество. Продолжить без заполнения?",
                 ButtonType.YES, ButtonType.CANCEL);
+        Button yesButton = (Button) alert.getDialogPane().lookupButton(ButtonType.YES);
+        yesButton.setText("Да");
+        Button cancelButton = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        cancelButton.setText("Отмена");
         alert.setHeaderText(null);
         alert.initOwner(window);
         alert.showAndWait();
@@ -105,7 +110,7 @@ public class Helper {
     }
 
     private void showMessageWarning(String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.APPLY);
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
         alert.setHeaderText(null);
         alert.initOwner(window);
         alert.show();
