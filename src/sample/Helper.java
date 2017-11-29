@@ -97,6 +97,7 @@ public class Helper {
                 "Не заполнено отчество. Продолжить без заполнения?",
                 ButtonType.YES, ButtonType.CANCEL);
         alert.setHeaderText(null);
+        alert.initOwner(window);
         alert.showAndWait();
 
         return alert.getResult();
@@ -106,6 +107,7 @@ public class Helper {
     private void showMessageWarning(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.APPLY);
         alert.setHeaderText(null);
+        alert.initOwner(window);
         alert.show();
     }
 
