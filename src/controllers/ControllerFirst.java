@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import sample.FieldError;
 import sample.Person;
 
 import java.net.URL;
@@ -49,7 +50,13 @@ public class ControllerFirst implements Initializable, Controllers {
     }
 
 
-    public void setFocusToField() {
+    private void setFocusToField() {
         fioField.requestFocus();
     }
+
+	@Override
+	public void setFocus(FieldError error) {
+		setFocusToField();
+		
+	}
 }

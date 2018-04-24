@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import sample.FieldError;
 import sample.Person;
 
 public interface Controllers {
@@ -11,5 +12,5 @@ public interface Controllers {
 
     void addAction(EventHandler<ActionEvent> event);
 
-
+    void setFocus(FieldError field);
 }

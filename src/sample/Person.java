@@ -1,9 +1,9 @@
 package sample;
 
 public class Person {
-    String surname;
-    String name;
-    String patronymic;
+    private String surname;
+    private String name;
+    private String patronymic;
 
     public Person() {
     }

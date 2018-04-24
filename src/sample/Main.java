@@ -7,7 +7,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("JavaFX Application");
         Helper helper = new Helper(primaryStage);
 
     }
@@ -15,6 +15,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 
 
